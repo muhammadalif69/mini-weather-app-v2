@@ -1,6 +1,6 @@
 {
-    "name": "mini_weather_app",
-    "short_name": "mini_weather_app",
+    "name": "cuaca",
+    "short_name": "cuaca",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

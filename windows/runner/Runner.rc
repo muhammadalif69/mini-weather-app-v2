@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "mini_weather_app" "\0"
+            VALUE "FileDescription", "cuaca" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "mini_weather_app" "\0"
+            VALUE "InternalName", "cuaca" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "mini_weather_app.exe" "\0"
-            VALUE "ProductName", "mini_weather_app" "\0"
+            VALUE "OriginalFilename", "cuaca.exe" "\0"
+            VALUE "ProductName", "cuaca" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
