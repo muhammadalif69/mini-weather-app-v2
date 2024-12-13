@@ -7,14 +7,14 @@ class WeatherItem extends StatelessWidget {
   final String imageUrl;
 
   const WeatherItem({
-    Key? key,required this.value, required this.unit, required this.imageUrl,}) : super(key: key);
+    super.key,required this.value, required this.unit, required this.imageUrl,});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           height: 60,
           width: 60,
           decoration: BoxDecoration(
