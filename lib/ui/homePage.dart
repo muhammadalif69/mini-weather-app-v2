@@ -1,13 +1,13 @@
 import 'package:intl/intl.dart';
 import 'package:mini_weather_app/components/weather_item.dart';
 import 'package:mini_weather_app/widgets/constants.dart';
-//import 'package:mini_weather_app/ui/detail_page.dart';
+import 'package:mini_weather_app/ui/detail_page.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;  // Library HTTP untuk melakukan request API.
-import 'dart:convert'; // Untuk decoding JSON dari API.
-import 'dart:ui'; // Untuk manipulasi UI.
-import 'package:flutter/services.dart'; // Untuk interaksi dengan sistem Flutter.
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';  // Library untuk modal bottom sheet.
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:ui';
+import 'package:flutter/services.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _cityController = TextEditingController();
   final Constants _constants = Constants();
 
-  static String API_KEY = 'e07d6d27c34f4fb3b1731151240612'; // Kunci API untuk layanan cuaca
+  static String API_KEY = 'e07d6d27c34f4fb3b1731151240612'; //API
 
   String location = 'Lhokseumawe';
   String weatherIcon = 'heavycloudy.png';
@@ -35,62 +35,61 @@ class _HomePageState extends State<HomePage> {
 
   String currentweatherStatus = '';
 
-  // URL untuk mengakses API cuaca
+  //API CALL
   String searchWeatherAPI =
       "http://api.weatherapi.com/v1/current.json?key=$API_KEY&days=7&q=";
 
-// Fungsi untuk mengambil data cuaca berdasarkan nama kota
   void fetchWeatherData(String searchText) async {
     try {
       var searchResult =
-          await http.get(Uri.parse(searchWeatherAPI + searchText)); // Request API
+          await http.get(Uri.parse(searchWeatherAPI + searchText));
 
       final weatherData = Map<String, dynamic>.from(
-          json.decode(searchResult.body) ?? 'No Data'); // Decode data JSON.
+          json.decode(searchResult.body) ?? 'No Data');
 
-      var locationData = weatherData['location']; // Data lokasi dari API
-      var currentWeather = weatherData['current']; //Data cuaca saat ini dari API
+      var locationData = weatherData['location'];
+      var currentWeather = weatherData['current'];
 
       setState(() {
-        location = getShortLocationName(locationData['name']);  // Memperpendek nama lokasi.
+        location = getShortLocationName(locationData['name']);
 
         var parsedDate =
-            DateTime.parse(locationData["localtime"].substring(0, 10)); // Parse tanggal dari data
-        var newDate = DateFormat('MMMMEEEd').format(parsedDate);  // Format tanggal.
-        currentDate = newDate;  // Update tanggal.
+            DateTime.parse(locationData["localtime"].substring(0, 10));
+        var newDate = DateFormat('MMMMEEEd').format(parsedDate);
+        currentDate = newDate;
 
-        //update data Weather
+        //update Weather
 
-        currentweatherStatus = currentWeather['condition']['text']; 
+        currentweatherStatus = currentWeather['condition']['text'];
         weatherIcon =
-            currentweatherStatus.replaceAll(' ', ' ').toLowerCase() + '.png'; // Nama file ikon cuaca
-        temperature = currentWeather['temp_c'].toInt(); // Suhu dalam Celcius
-        humidity = currentWeather['humidity'].toInt();  // Kelembapan
-        windSpeed = currentWeather['wind_kph'].toInt(); // Kecepatan Angin
-        cloud = currentWeather['cloud'].toInt();  // Tingkat awan
+            '${currentweatherStatus.replaceAll(' ', ' ').toLowerCase()}.png';
+        temperature = currentWeather['temp_c'].toInt();
+        humidity = currentWeather['humidity'].toInt();
+        windSpeed = currentWeather['wind_kph'].toInt();
+        cloud = currentWeather['cloud'].toInt();
 
-        //update prediksi cuaca per hari dan per jam
+        //update hourly weather forecast
         dailyWeatherForecast = weatherData['forecast']['forecastday'];
         hourlyWeatherForecast = dailyWeatherForecast[0]['hour'];
-        print(dailyWeatherForecast);  // Debug output.
+        print(dailyWeatherForecast);
       });
     } catch (e) {
-      print(e); // Menangkap dan mencetak error jika ada masalah.
+      print(e);
     }
   }
 
   //function to get short location name
   static String getShortLocationName(String s) {
-    List<String> wordList = s.split(' '); // Pisahkan nama berdasarkan spasi
+    List<String> wordList = s.split(' ');
 
     if (wordList.isNotEmpty) {
       if (wordList.length > 1) {
-        return wordList[0] + ' ' + wordList[1]; // Ambil dua kata pertama
+        return '${wordList[0]} ${wordList[1]}';
       } else {
-        return wordList[0]; // Ambil kata pertama.
+        return wordList[0];
       }
     } else {
-      return " "; // Kembalikan string kosong jika tidak ada kata.
+      return " ";
     }
   }
 
@@ -107,7 +106,7 @@ class _HomePageState extends State<HomePage> {
         color: _constants.primaryColor.withOpacity(.2),
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           Container(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             height: size.height * .7,
             decoration: BoxDecoration(
                 gradient: _constants.linearGradientBlue,
@@ -143,14 +142,14 @@ class _HomePageState extends State<HomePage> {
                               )),
                           IconButton(
                               onPressed: () {
-                                _cityController.clear();  //Membersihkan input teks kota.
+                                _cityController.clear();
                                 showBarModalBottomSheet(
                                     context: context,
                                     builder: (context) => SingleChildScrollView(
                                           controller:
-                                              ModalScrollController.of(context),  //Scroll controller modal.
+                                              ModalScrollController.of(context),
                                               child: Container(
-                                                height: size.height * .2, // Tinggi modal.
+                                                height: size.height * .2,
                                                 padding: const EdgeInsets.symmetric(
                                                   horizontal: 20,
                                                   vertical: 10,
@@ -160,23 +159,23 @@ class _HomePageState extends State<HomePage> {
                                                     SizedBox(
                                                       width: 70,
                                                       child: Divider(
-                                                        thickness: 3.5, // Ketebalan garis.
+                                                        thickness: 3.5,
                                                         color: 
-                                                          _constants.primaryColor,  // Warna garis
+                                                          _constants.primaryColor,
                                                       ),
                                                     ),
                                                     const SizedBox(
                                                       height: 10,
-                                                    ), //Jarak Vertikal
+                                                    ),
                                                     TextField(
                                                       onChanged: (searchText){
-                                                        fetchWeatherData(searchText); // Panggil fungsi pencarian cuaca saat teks berubah.
+                                                        fetchWeatherData(searchText);
                                                       },
-                                                      controller: _cityController,  // Controller input teks.
-                                                      autofocus: true,  // Fokus otomatis pada input teks
+                                                      controller: _cityController,
+                                                      autofocus: true,
                                                       decoration: InputDecoration(
                                                         prefixIcon: Icon(
-                                                          Icons.search, // Ikon Pencarian
+                                                          Icons.search,
                                                           color: _constants
                                                           .primaryColor,
                                                         ),
@@ -184,15 +183,15 @@ class _HomePageState extends State<HomePage> {
                                                           GestureDetector(
                                                             onTap: () =>
                                                             _cityController
-                                                            .clear(), // Membersihkan teks input
+                                                            .clear(),
                                                         child: Icon(
-                                                          Icons.close,  // Ikon tutup
+                                                          Icons.close,
                                                           color: _constants
                                                           .primaryColor,
                                                         ),
                                                         ),
                                                           hintText: 
-                                                            'Search city e.g. Banda Aceh',  // Placeholder input.
+                                                            'Search city e.g. Banda Aceh',
                                                          focusedBorder: 
                                                             OutlineInputBorder(
                                                         borderSide: BorderSide(
@@ -228,7 +227,6 @@ class _HomePageState extends State<HomePage> {
                     height: 160,
                     child: Image.asset("assets/$weatherIcon"),
                   ),
-                  // Baris cuaca saat ini (ikon dan informasi utama).
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -303,7 +301,7 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Today',
+                      const Text('Today',
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold)),
                       GestureDetector(
@@ -328,74 +326,67 @@ class _HomePageState extends State<HomePage> {
                           String forcastTime = hourlyWeatherForecast[index]
                                   ['time']
                               .substring(11, 16);
-                          // Mendapatkan jam prakiraan cuaca dari data JSON dan memotong string waktu.
                           String forecastHour = hourlyWeatherForecast[index]
                                   ["time"]
                               .substring(11, 13);
-                          // Mendapatkan nama kondisi cuaca dari data JSON.
                           String forecastWeatherName =
                               hourlyWeatherForecast[index]["condition"]["text"];
-                          // // Mengubah nama kondisi cuaca menjadi nama file ikon dengan format lowercase.
-                          String forecastWeatherIcon = forecastWeatherName
+                          String forecastWeatherIcon = "${forecastWeatherName
                                   .replaceAll(' ', ' ')
-                                  .toLowerCase() +
-                              ".png";
-                          // Mendapatkan suhu prakiraan cuaca dalam bentuk integer dan mengonversinya ke string.
+                                  .toLowerCase()}.png";
+
                           String forecastTemperature =
                               hourlyWeatherForecast[index]["temp_c"]
                                   .round()
                                   .toString();
-                          // Membuat container untuk setiap jam prakiraan cuaca.
+
                           return Container(
-                            padding: EdgeInsets.symmetric(vertical: 15), // Memberikan padding vertikal di dalam container.
-                            margin: EdgeInsets.only(right: 20), // Memberikan margin di sebelah kanan.
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            margin: const EdgeInsets.only(right: 20),
                             width: 60,
                             decoration: BoxDecoration(
                                 color: currentHour == forecastHour
-                                    ? _constants.primaryColor // Warna container berdasarkan apakah itu jam saat ini.
+                                    ? _constants.primaryColor
                                     : Colors.white,
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(50)), // Membuat sudut membulat.
+                                    const BorderRadius.all(Radius.circular(50)),
                                 boxShadow: [
                                   BoxShadow(
-                                      offset: const Offset(0, 1), // Posisi bayangan.
-                                      blurRadius: 5, // Tingkat keburaman bayangan.
+                                      offset: const Offset(0, 1),
+                                      blurRadius: 5,
                                       color: _constants.primaryColor
                                           .withOpacity(.2))
                                 ]),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround, // Mengatur elemen secara merata dalam kolom.
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                // Menampilkan jam prakiraan cuaca.
                                 Text(
                                   forcastTime,
                                   style: TextStyle(
                                       fontSize: 17,
                                       color: _constants.greycolor,
-                                      fontWeight: FontWeight.bold), // Teks tebal.
+                                      fontWeight: FontWeight.bold),
                                 ),
-                                // Menampilkan ikon cuaca berdasarkan kondisi cuaca.
                                 Image.asset(
                                   'assets/$forecastWeatherIcon',
-                                  width: 20, // Lebar ikon.
+                                  width: 20,
                                 ),
-                                // Menampilkan suhu prakiraan cuaca dengan simbol derajat.
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.center, // Elemen diatur di tengah horizontal.
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      forecastTemperature,  // Suhu dalam derajat Celcius.
+                                      forecastTemperature,
                                       style: TextStyle(
                                           fontSize: 17,
-                                          color: _constants.greycolor, // Warna teks.
-                                          fontWeight: FontWeight.bold), // Teks tebal.
+                                          color: _constants.greycolor,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      'o', // Simbol derajat.
+                                      'o',
                                       style: TextStyle(
-                                        fontSize: 17, // Ukuran font simbol.
-                                        color: _constants.greycolor, // Warna simbol.
-                                        fontWeight: FontWeight.w600, // Teks semi-tebal.
+                                        fontSize: 17,
+                                        color: _constants.greycolor,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     )
                                   ],
