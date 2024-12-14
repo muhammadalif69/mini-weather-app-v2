@@ -7,9 +7,9 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:weatherapp/components/weather_item.dart';
-import 'package:weatherapp/ui/detail_page.dart';
-import 'package:weatherapp/widgets/constants.dart';
+import 'package:mini_weather_app2/components/weather_item.dart';
+import 'package:mini_weather_app2/ui/detail_page.dart';
+import 'package:mini_weather_app2/widgets/constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   static String API_KEY =
       '18cdc76af30c4616af1174326232503'; //Paste Your API Here
 
-  String location = 'Mumbai'; //Default location
+  String location = 'Indonesia'; //Default location
   String weatherIcon = 'heavycloudy.png';
   int temperature = 0;
   int windSpeed = 0;

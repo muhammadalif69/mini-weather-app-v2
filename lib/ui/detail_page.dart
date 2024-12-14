@@ -1,9 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
 import 'package:intl/intl.dart';
-import 'package:weatherapp/components/weather_item.dart';
+import 'package:mini_weather_app2/components/weather_item.dart';
 
 import '../widgets/constants.dart';
 
