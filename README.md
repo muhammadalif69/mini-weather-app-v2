@@ -1,67 +1,106 @@
-# Weather App ☀️☂️
-Weather App adalah aplikasi modern yang menyajikan informasi cuaca terkini secara real-time berdasarkan lokasi Anda. Dengan antarmuka yang sederhana dan intuitif, aplikasi ini dirancang untuk membantu Anda merencanakan aktivitas harian dengan lebih baik.   
-<br>
+<h1 align="center">🌦️ Mini Weather App v2 — Real-Time Weather Information</h1>
 
-# 🌍 Fitur Utama
-- Data Cuaca Real-Time: Informasi terkini tentang suhu, kondisi langit, kecepatan angin, dan prediksi harian.
-- Prediksi Harian: Persiapkan hari Anda dengan informasi akurat.
-- Antarmuka Elegan: Desain yang minimalis dan ramah pengguna.
-- Responsif dan Cepat: Pengalaman pengguna yang optimal dengan teknologi terbaru.   
-<br>
+<p align="center">
+  <i>A modern and elegant weather forecast application built with</i><br>
+  <b>Flutter, Dart, and Weather API</b><br>
+  — Developed as part of a mobile programming practical project —
+</p>
 
-# 🛠️ Teknologi yang Digunakan  
-- Flutter: Framework utama untuk pengembangan aplikasi.  
-- Weather API: Digunakan untuk mengambil data cuaca secara real-time.  
-- Git: Untuk mengelola versi kode.    
-<br>
+<p align="center">
+  ⚙️ Designed to learn API integration, UI design, and mobile app development using Flutter.
+</p>
 
-# 🔄 Getting Started
-Ikuti langkah-langkah berikut untuk menjalankan aplikasi ini di perangkat Anda:
-1. Pastikan Prasyarat Terpenuhi   
-- Flutter sudah terinstal di perangkat Anda. [Petunjuk Instalasi Flutter](https://docs.flutter.dev/get-started/install?_gl=1*9mxgvu*_ga*ODg4NzgxNjc0LjE3MzQwMDY3MzI.*_ga_04YGWK0175*MTczNDAwNjczMS4xLjAuMTczNDAwNjczMS4wLjAuMA..)
-- Git sudah terpasang untuk manajemen repositori.
-2. Clone Repositori   
-   Jalankan perintah berikut untuk menyalin kode aplikasi ke komputer Anda:
-    ```bash
-    git clone https://github.com/muhammadalif12/MINI_WEATHER_APP
-    ```
-3. Masuk ke Direktori Proyek 
-   Pindah ke folder proyek yang telah di-clone:
-   ```bash
-   cd MINI_WEATHER_APP
-    ```
-4. Instal Dependensi  
-   Pastikan semua paket yang dibutuhkan sudah terinstal dengan menjalankan perintah berikut:
-   ```bash
-   flutter pub get
-    ```
-6. Jalankan Aplikasi   
-   Setelah semua dependensi terinstal, jalankan aplikasi dengan perintah berikut:
-   ```bash
-   flutter run
-    ```
-<div align="start">
-    <p><b>Catatan: Pastikan emulator atau perangkat fisik Anda telah terhubung.</b></p>
-</div><br>
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white">
+  <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white">
+  <img src="https://img.shields.io/badge/API-Weather%20Data-yellow?style=for-the-badge&logo=openweathermap&logoColor=white">
+  <img src="https://img.shields.io/badge/Made%20with%20☁️%20in-Indonesia-red?style=for-the-badge">
+</p>
 
-# 👨‍👩‍👦 Kontributor
-Weather App dikembangkan penuh oleh Tim Skywatchers, diantaranya:
-1. Faza Humairah
-2. Jhona Simanjuntak
-3. Muhammad Alif
-4. Muhammad Rizki Arta Maulana
-5. Riski Maulani   
-<br>
+---
 
-# ✨ Temukan Kami
-Tetap terhubung dengan kami untuk pembaruan lebih lanjut atau kontribusi ke proyek ini:
-- Repositori GitHub: [Weather App](https://github.com/muhammadalif69/MINI_WEATHER_APP)   
-<br>
+## 💡 About the Project
 
-# 🌟 Dukungan dan Kontribusi
-Kami dengan senang hati menerima kontribusi Anda untuk pengembangan aplikasi ini!   
-- Laporkan bug atau ajukan fitur baru, [Hubungi Kami](https://wa.me/+6285262128251).   
-- Buat pull request untuk perbaikan atau fitur tambahan.
-Terima kasih atas dukungan Anda! Mari kita buat aplikasi ini semakin baik bersama-sama.      
-<br>
-© 2024 Weather App - By Skywatchers.
+**Weather App v2** is a mobile application that provides **real-time weather updates** based on your location.  
+It fetches live weather data such as **temperature, humidity, wind speed, and sky condition** using a reliable **Weather API**.  
+
+This project was built using **Flutter** to demonstrate mobile development fundamentals, including **API integration**, **state management**, and **responsive UI design**.
+
+---
+
+## ✨ Features
+
+✅ Real-time weather data based on user location  
+✅ Daily weather forecast and temperature updates  
+✅ Modern, minimal, and responsive UI  
+✅ API integration using Flutter and Dart  
+✅ Fast performance and smooth animations  
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Description |
+|-------------|-------------|
+| **Flutter** | Main framework for app development |
+| **Dart** | Programming language for Flutter |
+| **Weather API** | Source of real-time weather data |
+| **Git** | Version control system |
+| **Android Emulator / Device** | For testing and deployment |
+
+---
+
+🚀 How to Run Locally
+
+Install Prerequisites
+
+Make sure Flutter is installed → Flutter Installation Guide
+
+Ensure Git is installed on your system
+
+Clone the Repository
+```plaintext
+git clone https://github.com/muhammadalif12/MINI_WEATHER_APP
+```
+
+Navigate into the Project Folder
+```plaintext
+cd MINI_WEATHER_APP
+```
+
+Install Dependencies
+```plaintext
+flutter pub get
+```
+
+Run the Application
+```plaintext
+flutter run
+```
+
+💡 Note: Make sure your Android emulator or physical device is connected before running the app.
+
+## 💬 Acknowledgments
+
+<p align="center">
+  Special thanks to <b>Politeknik Negeri Lhokseumawe (PNL)</b> for continuous guidance and inspiration,<br>
+  and to everyone who has supported my growth as a web developer 🙌
+</p>
+
+<p align="center">
+  ⭐ If you like this project, consider giving it a star — it means a lot!
+</p>
+
+## 📞 Contact Me
+
+<p align="center">
+  👤 <b>Muhammad Alif</b><br>
+  📧 <a style="text-decoration:none;" href="mailto:62.muhammadalif@gmail.com">62.muhammadalif@gmail.com</a><br>
+  🌍 <a style="text-decoration:none;" href="https://github.com/muhammadalif69">GitHub Profile</a>
+</p>
+
+<p align="center">
+  <i>"Every great journey begins with a single line of code."</i><br>
+  💻✨
+</p>
+
